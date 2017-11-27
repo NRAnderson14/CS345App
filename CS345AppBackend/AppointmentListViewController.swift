@@ -8,14 +8,26 @@
 
 import UIKit
 
-class AppointmentListViewController: ViewController {
+class AppointmentListViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    private let screenSize: CGRect = UIScreen.main.bounds
+    private let tableView: UITableView
+    private let appointments: [(time: String, details: String)]
     
     init() {
+        tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
+        appointments = getAppointments()
+        
         super.init(nibName: nil, bundle: nil)
         
         self.view.backgroundColor = UIColor(red:0.15, green:0.37, blue:0.41, alpha:1.0)
         self.edgesForExtendedLayout = []
         self.extendedLayoutIncludesOpaqueBars = true
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,19 +43,20 @@ class AppointmentListViewController: ViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return appointments.count
+    }
     
-    public func loadAppointments() -> Void {
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        cell.textLabel!.text = "\(appointments[indexPath.row].details) at \(appointments[indexPath.row].time)"
+        return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let apptView: AppointmentViewController = AppointmentViewController()
+        self.navigationController?.pushViewController(apptView, animated: true)
     }
-    */
 
 }

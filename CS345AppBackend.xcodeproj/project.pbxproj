@@ -17,6 +17,7 @@
 		AF885E8E1FC266EC0045498F /* AppointmentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF885E8D1FC266EC0045498F /* AppointmentListViewController.swift */; };
 		AF885E901FC266FD0045498F /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF885E8F1FC266FD0045498F /* AppointmentViewController.swift */; };
 		AF885E921FC2670F0045498F /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF885E911FC2670F0045498F /* StoreViewController.swift */; };
+		AFA608ED1FCB90C100A122D8 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA608EC1FCB90C100A122D8 /* MainScreenViewController.swift */; };
 		AFCD0A7E1FC8EABF0077F883 /* AppTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD0A7D1FC8EABF0077F883 /* AppTabController.swift */; };
 		AFCD0AAA1FCA22CD0077F883 /* SQLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF2182F31FB941C900E187D4 /* SQLite.framework */; };
 		AFCD0AAB1FCA22CD0077F883 /* SQLite.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF2182F31FB941C900E187D4 /* SQLite.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -158,6 +159,7 @@
 		AF885E8D1FC266EC0045498F /* AppointmentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListViewController.swift; sourceTree = "<group>"; };
 		AF885E8F1FC266FD0045498F /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
 		AF885E911FC2670F0045498F /* StoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		AFA608EC1FCB90C100A122D8 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		AFCD0A7D1FC8EABF0077F883 /* AppTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabController.swift; sourceTree = "<group>"; };
 		AFCD0A921FCA22A40077F883 /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SQLite.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,6 +210,7 @@
 				AF885E8F1FC266FD0045498F /* AppointmentViewController.swift */,
 				AF885E911FC2670F0045498F /* StoreViewController.swift */,
 				AFCD0A7D1FC8EABF0077F883 /* AppTabController.swift */,
+				AFA608EC1FCB90C100A122D8 /* MainScreenViewController.swift */,
 			);
 			path = CS345AppBackend;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				AFCD0A7E1FC8EABF0077F883 /* AppTabController.swift in Sources */,
 				AF2182811FB9371E00E187D4 /* DataMethods.swift in Sources */,
 				AF885E921FC2670F0045498F /* StoreViewController.swift in Sources */,
+				AFA608ED1FCB90C100A122D8 /* MainScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

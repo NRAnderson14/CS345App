@@ -36,7 +36,6 @@ class StoreViewController: ViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "My Store"
-        self.navigationController?.navigationBar.tintColor = UIColor(red:0.05, green:0.20, blue:0.23, alpha:1.0)
     }
 
     override func didReceiveMemoryWarning() {

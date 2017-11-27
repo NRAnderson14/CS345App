@@ -28,6 +28,7 @@ let appointments = Table("appointments")
 let appointmentID = Expression<Int64>("appointmentID")
 let userID = Expression<Int64>("userID")
 let apptTime = Expression<String>("appointmentTime")
+let apptDetails = Expression<String>("appointmentDetails")
 
 
 func createDB() -> Void {
@@ -51,6 +52,7 @@ func createDB() -> Void {
             t.column(appointmentID, primaryKey: .autoincrement)
             t.column(userID)
             t.column(apptTime)
+            t.column(apptDetails)
             t.column(storeID)
             t.foreignKey(userID, references: accounts, id)
             t.foreignKey(storeID, references: stores, storeID)
@@ -80,11 +82,11 @@ func addAccount(userFirstName: String, userLastName: String, userHomeStore: Int6
     }
 }
 
-func addAppointment(user: Int64, appointmentTime: String, store: Int64) -> Void {
+func addAppointment(user: Int64, store: Int64, appointmentTime: String, appointmentDetails: String) -> Void {
     do {
         let DB = try Connection("\(path)/db.sqlite3")
         
-        try DB.run(appointments.insert(userID <- user, apptTime <- appointmentTime, storeID <- store))
+        try DB.run(appointments.insert(userID <- user, apptTime <- appointmentTime, apptDetails <- appointmentDetails, storeID <- store))
     } catch {
         print(error)
     }
@@ -106,6 +108,22 @@ func getStores() -> [String] {
     return res
 }
 
+func getAppointments() -> [(time: String, details: String)] {
+    var res: [(time: String, details: String)] = [(time: String, details: String)]()
+    do {
+        let DB = try Connection("\(path)/db.sqlite3")
+        
+        for appt in try DB.prepare(appointments.select(apptDetails, apptTime)) {
+            res.append((appt[apptTime], appt[apptDetails]))
+        }
+        
+    } catch {
+        print(error)
+    }
+    
+    return res
+}
+
 func delDB() -> Void {
     let fileman = FileManager.default
     do {
@@ -116,4 +134,11 @@ func delDB() -> Void {
     } catch {
         print(error)
     }
+}
+
+func populateData() -> Void {
+    addStore(name: "Store One", storeAddress: "Store one's address")
+    addStore(name: "Store Two", storeAddress: "Store two's address")
+    addAccount(userFirstName: "Nathan", userLastName: "Anderson", userHomeStore: 1)
+    addAppointment(user: 1, store: 1, appointmentTime: "11:30 11/29/17", appointmentDetails: "Oil change")
 }

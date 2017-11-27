@@ -1,14 +1,14 @@
 //
-//  AppointmentViewController.swift
+//  MainScreenViewController.swift
 //  CS345AppBackend
 //
-//  Created by Anderson, Nathan R on 11/19/17.
+//  Created by Anderson, Nathan R on 11/26/17.
 //  Copyright © 2017 Anderson, Nathan R. All rights reserved.
 //
 
 import UIKit
 
-class AppointmentViewController: ViewController {
+class MainScreenViewController: UIViewController {
 
     init() {
         
@@ -23,7 +23,7 @@ class AppointmentViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Change Appointment"
+        self.title = "Main Screen"
     }
 
     override func didReceiveMemoryWarning() {
