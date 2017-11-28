@@ -55,7 +55,7 @@ class AppointmentListViewController: ViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let apptView: AppointmentViewController = AppointmentViewController()
+        let apptView: AppointmentViewController = AppointmentViewController(indexPath.row)
         self.navigationController?.pushViewController(apptView, animated: true)
     }
 

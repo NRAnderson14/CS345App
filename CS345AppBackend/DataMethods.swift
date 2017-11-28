@@ -124,6 +124,47 @@ func getAppointments() -> [(time: String, details: String)] {
     return res
 }
 
+func getUserStore(_ userID: Int64) -> (name: String, address: String) {
+    var userStoreID: Int64
+    var nameRes: String = ""
+    var addressRes: String = ""
+    do {
+        let DB = try Connection("\(path)/db.sqlite3")
+        //SELECT name, address FROM stores WHERE storeID = (SELECT userStore FROM accounts WHERE id = userID);
+        let storeIDQuery = accounts.select(userStore)
+                                   .filter(id == userID)
+        let idqr = try DB.pluck(storeIDQuery)
+        userStoreID = idqr![userStore]
+        
+        let storeQuery = stores.select(storeName, address)
+                               .filter(storeID == userStoreID)
+        let sqr = try DB.pluck(storeQuery)
+        nameRes = sqr![storeName]
+        addressRes = sqr![address]
+        
+    } catch {
+        print(error)
+    }
+    
+    return (nameRes, addressRes)
+}
+
+func updateStore(_ storeID: Int64) -> Void {
+    do {
+        let DB = try Connection("\(path)/db.sqlite3")
+        let user = accounts.filter(id == 1)    //Only one account for now
+        try DB.run(user.update(userStore <- storeID))
+    } catch {
+        print(error)
+    }
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+////////////////                Testing                    ////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
 func delDB() -> Void {
     let fileman = FileManager.default
     do {
