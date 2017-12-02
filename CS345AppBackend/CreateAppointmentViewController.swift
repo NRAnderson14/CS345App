@@ -66,8 +66,7 @@ class CreateAppointmentViewController: UIViewController {
         let formatter: DateFormatter = DateFormatter()
         formatter.dateFormat = "MMM dd 'at' hh:mm"
         let dateString: String = formatter.string(from: date)
-        print(content + " on " + dateString)
-        
+        addAppointment(user: 1, store: 1, appointmentTime: dateString, appointmentDetails: content)
     }
     
 

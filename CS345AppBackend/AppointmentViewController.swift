@@ -12,28 +12,18 @@ class AppointmentViewController: UIViewController {
     
     private let rowLabel: UILabel
 
-    init(_ rowNum: Int) {
-        rowLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
-        
-        let df: ISO8601DateFormatter = ISO8601DateFormatter()
-        df.timeZone = TimeZone(abbreviation: "CST")
-        let df2: DateFormatter = DateFormatter()
-        df2.locale = Locale(identifier: "en_US")
-//        df2.dateFormat = "yyyy-MM-dd'T'hh:mm:ssZZZZZ"
-        df2.dateFormat = "hh:mm' on 'MMMM dd"
-        
-        let theDate: Date = Date()
-        print(theDate.asSQL())
-        let currtime: String = df.string(from: theDate)
-        let newTime: String = df2.string(from: theDate)
+    init(_ apptString: String) {
+        rowLabel = UILabel(frame: CGRect(x: 100, y: 100, width: 120, height: 100))
         
         super.init(nibName: nil, bundle: nil)
         
-        rowLabel.text = String(rowNum)
-        
         self.view.backgroundColor = UIColor(red:0.15, green:0.37, blue:0.41, alpha:1.0)
-        print(currtime)
-        print(newTime)
+        
+        rowLabel.text = apptString
+        rowLabel.numberOfLines = 0
+        rowLabel.textAlignment = .center
+        rowLabel.backgroundColor = UIColor(red:0.56, green:0.85, blue:0.91, alpha:1.0)
+        rowLabel.textColor = UIColor(red:0.06, green:0.11, blue:0.05, alpha:1.0)
         self.view.addSubview(rowLabel)
     }
     
