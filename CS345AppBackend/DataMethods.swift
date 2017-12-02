@@ -106,6 +106,7 @@ func getStores() -> [String] {
     }
     
     return res
+    
 }
 
 func getAppointments() -> [(time: String, details: String)] {
@@ -122,6 +123,7 @@ func getAppointments() -> [(time: String, details: String)] {
     }
     
     return res
+    
 }
 
 func getUserStore(_ userID: Int64) -> (name: String, address: String) {
@@ -147,6 +149,7 @@ func getUserStore(_ userID: Int64) -> (name: String, address: String) {
     }
     
     return (nameRes, addressRes)
+    
 }
 
 func updateStore(_ storeID: Int64) -> Void {
@@ -157,6 +160,33 @@ func updateStore(_ storeID: Int64) -> Void {
     } catch {
         print(error)
     }
+}
+
+func selectFromAppointmentsWithText(text: String) -> (time: String, details: String) {
+    var timeRes: String = ""
+    var detailsRes: String = ""
+    
+    do {
+        let DB = try Connection("\(path)/db.sqlite3")
+        let query = appointments.select(apptTime, apptDetails).filter(apptDetails == text)
+        let queryRes = try DB.pluck(query)
+        
+        timeRes = queryRes![apptTime]
+        detailsRes = queryRes![apptDetails]
+    } catch {
+        print(error)
+    }
+    
+    return (timeRes, detailsRes)
+    
+}
+
+func updateAppointmentsWithText(text: String, date: String) -> Void {
+    
+}
+
+func deleteAppointmentWithText(text: String) -> Void {
+    
 }
 
 
