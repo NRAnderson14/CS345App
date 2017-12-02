@@ -32,6 +32,9 @@ class GeneralViewController: UIViewController
         
         super.init(nibName: nil, bundle: nil)
         
+        self.edgesForExtendedLayout = []
+        self.extendedLayoutIncludesOpaqueBars = true
+        
         let this = one
         this.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
         this.text = "Tune-Up"
@@ -69,7 +72,7 @@ class GeneralViewController: UIViewController
         
 
         
-        exit.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+200, width: 200, height: 50)
+        exit.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2-200, width: 200, height: 50)
         exit.text = "Return To Main Page"
         exit.isUserInteractionEnabled = true
         exit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.generalTap(_:))))
@@ -80,9 +83,10 @@ class GeneralViewController: UIViewController
         fatalError("init(coder:) has not been implemented")
     }
     @objc func generalTap(_ recognizer: UITapGestureRecognizer) {
-        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
-            NSLog("This is dismissed...")
-        })
+//        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
+//            NSLog("This is dismissed...")
+//        })
+        self.navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

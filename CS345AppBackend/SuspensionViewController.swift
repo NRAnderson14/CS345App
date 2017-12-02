@@ -28,6 +28,9 @@ class SuspensionViewController: UIViewController
         
         super.init(nibName: nil, bundle: nil)
         
+        self.edgesForExtendedLayout = []
+        self.extendedLayoutIncludesOpaqueBars = true
+        
         let this = one
         this.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
         this.text = "Sway Bar Replacement"
@@ -53,21 +56,25 @@ class SuspensionViewController: UIViewController
         w.text = "Control Arm Replacement"
         self.view.addSubview(w)
         
-        exit.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+200, width: 200, height: 50)
+        exit.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2-200, width: 200, height: 50)
         exit.text = "Return To Main Page"
         exit.isUserInteractionEnabled = true
-        exit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.suspensionTap(_:))))
+        exit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(suspensionTap(_:))))
         self.view.addSubview(exit)
         
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     @objc func suspensionTap(_ recognizer: UITapGestureRecognizer) {
-        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
-            NSLog("This is dismissed...")
-        })
+//        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
+//            NSLog("This is dismissed...")
+//        })
+        self.navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

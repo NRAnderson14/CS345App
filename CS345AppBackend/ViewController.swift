@@ -142,36 +142,41 @@ class ViewController: UIViewController {
     @objc func engineTap(_ recognizer: UITapGestureRecognizer) {
         let engineView: EngineViewController = EngineViewController(string: "Engine View Controller")
         engineView.view.backgroundColor = UIColor.white
-        self.present(engineView, animated: true) { () -> Void in
-            NSLog("Here it is ")}
+//        self.present(engineView, animated: true) { () -> Void in
+//            NSLog("Here it is ")}
+        self.navigationController?.pushViewController(engineView, animated: true)
     }
     
     @objc func driveTap(_ recognizer: UITapGestureRecognizer) {
         let drivetrainView: DriveViewController = DriveViewController(string: "Drive View Controller")
         drivetrainView.view.backgroundColor = UIColor.white
-        self.present(drivetrainView, animated: true) { () -> Void in
-            NSLog("Here it is ")}
+//        self.present(drivetrainView, animated: true) { () -> Void in
+//            NSLog("Here it is ")}
+        self.navigationController?.pushViewController(drivetrainView, animated: true)
     }
     
     @objc func suspensionTap(_ recognizer: UITapGestureRecognizer) {
         let susView: SuspensionViewController = SuspensionViewController(string: "Suspension View Controller")
         susView.view.backgroundColor = UIColor.white
-        self.present(susView, animated: true) { () -> Void in
-            NSLog("Here it is ")}
+//        self.present(susView, animated: true) { () -> Void in
+//            NSLog("Here it is ")}
+        self.navigationController?.pushViewController(susView, animated: true)
     }
     
     @objc func lightTap(_ recognizer: UITapGestureRecognizer) {
         let lightView: LightViewController = LightViewController(string: "Lighting View Controller")
         lightView.view.backgroundColor = UIColor.white
-        self.present(lightView, animated: true) { () -> Void in
-            NSLog("Here it is ")}
+//        self.present(lightView, animated: true) { () -> Void in
+//            NSLog("Here it is ")}
+        self.navigationController?.pushViewController(lightView, animated: true)
     }
     
     @objc func generalTap(_ recognizer: UITapGestureRecognizer) {
         let generalView: GeneralViewController = GeneralViewController(string: "General Work View Controller")
         generalView.view.backgroundColor = UIColor.white
-        self.present(generalView, animated: true) { () -> Void in
-            NSLog("Here it is ")}
+//        self.present(generalView, animated: true) { () -> Void in
+//            NSLog("Here it is ")}
+        self.navigationController?.pushViewController(generalView, animated: true)
     }
 
 
