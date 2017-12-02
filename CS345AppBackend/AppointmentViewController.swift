@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppointmentViewController: ViewController {
+class AppointmentViewController: UIViewController {
     
     private let rowLabel: UILabel
 

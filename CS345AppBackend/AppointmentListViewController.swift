@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppointmentListViewController: ViewController, UITableViewDelegate, UITableViewDataSource {
+class AppointmentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let screenSize: CGRect = UIScreen.main.bounds
     private let tableView: UITableView

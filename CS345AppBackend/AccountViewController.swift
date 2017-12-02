@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccountViewController: ViewController {
+class AccountViewController: UIViewController {
 
     private let apptButton: UIButton
     private let storeButton: UIButton

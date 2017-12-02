@@ -14,14 +14,14 @@ class AppTabController: UITabBarController {
         super.viewDidLoad()
         
         let mainNav = UINavigationController()
-        let mainView = MainScreenViewController()
+        let mainView = ViewController()
         mainNav.viewControllers = [mainView]
-        mainNav.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        mainNav.tabBarItem = UITabBarItem(title: "Diagnose", image: UIImage(named: "diagnose.png"), tag: 0)
         
         let accountNav = UINavigationController()
         let accountMainView = AccountViewController()
         accountNav.viewControllers = [accountMainView]
-        accountNav.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
+        accountNav.tabBarItem = UITabBarItem(title: "Account", image: UIImage(named: "headicon.png"), tag: 1)
         
         let tabBarList = [mainNav, accountNav]
         viewControllers = tabBarList

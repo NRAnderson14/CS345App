@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoreViewController: ViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class StoreViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private let screenSize: CGRect = UIScreen.main.bounds
     private let topLabel: UILabel

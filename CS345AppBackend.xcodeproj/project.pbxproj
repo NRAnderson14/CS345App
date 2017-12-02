@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF16BF0B1FD31F2500AC7998 /* EngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16BEF91FD31F2500AC7998 /* EngineViewController.swift */; };
+		AF16BF0C1FD31F2500AC7998 /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16BF071FD31F2500AC7998 /* LightViewController.swift */; };
+		AF16BF0D1FD31F2500AC7998 /* SuspensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16BF081FD31F2500AC7998 /* SuspensionViewController.swift */; };
+		AF16BF0E1FD31F2500AC7998 /* DriveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16BF091FD31F2500AC7998 /* DriveViewController.swift */; };
+		AF16BF0F1FD31F2500AC7998 /* GeneralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF16BF0A1FD31F2500AC7998 /* GeneralViewController.swift */; };
 		AF2182511FB9357E00E187D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2182501FB9357E00E187D4 /* AppDelegate.swift */; };
 		AF2182531FB9357E00E187D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2182521FB9357E00E187D4 /* ViewController.swift */; };
 		AF2182561FB9357E00E187D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2182541FB9357E00E187D4 /* Main.storyboard */; };
@@ -146,6 +151,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF16BEF91FD31F2500AC7998 /* EngineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineViewController.swift; sourceTree = "<group>"; };
+		AF16BF071FD31F2500AC7998 /* LightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
+		AF16BF081FD31F2500AC7998 /* SuspensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuspensionViewController.swift; sourceTree = "<group>"; };
+		AF16BF091FD31F2500AC7998 /* DriveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveViewController.swift; sourceTree = "<group>"; };
+		AF16BF0A1FD31F2500AC7998 /* GeneralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralViewController.swift; sourceTree = "<group>"; };
 		AF21824D1FB9357E00E187D4 /* CS345AppBackend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS345AppBackend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2182501FB9357E00E187D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF2182521FB9357E00E187D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -197,6 +207,11 @@
 		AF21824F1FB9357E00E187D4 /* CS345AppBackend */ = {
 			isa = PBXGroup;
 			children = (
+				AF16BF091FD31F2500AC7998 /* DriveViewController.swift */,
+				AF16BEF91FD31F2500AC7998 /* EngineViewController.swift */,
+				AF16BF0A1FD31F2500AC7998 /* GeneralViewController.swift */,
+				AF16BF071FD31F2500AC7998 /* LightViewController.swift */,
+				AF16BF081FD31F2500AC7998 /* SuspensionViewController.swift */,
 				AFCD0A921FCA22A40077F883 /* SQLite.xcodeproj */,
 				AF2182501FB9357E00E187D4 /* AppDelegate.swift */,
 				AF2182521FB9357E00E187D4 /* ViewController.swift */,
@@ -435,14 +450,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF16BF0E1FD31F2500AC7998 /* DriveViewController.swift in Sources */,
+				AF16BF0F1FD31F2500AC7998 /* GeneralViewController.swift in Sources */,
 				AF885E901FC266FD0045498F /* AppointmentViewController.swift in Sources */,
 				AF2182531FB9357E00E187D4 /* ViewController.swift in Sources */,
 				AF2182511FB9357E00E187D4 /* AppDelegate.swift in Sources */,
 				AF885E8E1FC266EC0045498F /* AppointmentListViewController.swift in Sources */,
+				AF16BF0B1FD31F2500AC7998 /* EngineViewController.swift in Sources */,
 				AF885E7E1FC2666F0045498F /* AccountViewController.swift in Sources */,
 				AFCD0A7E1FC8EABF0077F883 /* AppTabController.swift in Sources */,
+				AF16BF0D1FD31F2500AC7998 /* SuspensionViewController.swift in Sources */,
 				AF2182811FB9371E00E187D4 /* DataMethods.swift in Sources */,
 				AF885E921FC2670F0045498F /* StoreViewController.swift in Sources */,
+				AF16BF0C1FD31F2500AC7998 /* LightViewController.swift in Sources */,
 				AFA608ED1FCB90C100A122D8 /* MainScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
