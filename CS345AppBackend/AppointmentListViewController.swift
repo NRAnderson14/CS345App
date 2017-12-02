@@ -11,8 +11,8 @@ import UIKit
 class AppointmentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     private let screenSize: CGRect = UIScreen.main.bounds
-    private let tableView: UITableView
-    private let appointments: [(time: String, details: String)]
+    private var tableView: UITableView
+    private var appointments: [(time: String, details: String)]
     
     init() {
         tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height))
@@ -43,6 +43,11 @@ class AppointmentListViewController: UIViewController, UITableViewDelegate, UITa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        appointments = getAppointments()
+        tableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return appointments.count
@@ -50,7 +55,7 @@ class AppointmentListViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
-        cell.textLabel!.text = "\(appointments[indexPath.row].details) at \(appointments[indexPath.row].time)"
+        cell.textLabel!.text = "\(appointments[indexPath.row].details) on \(appointments[indexPath.row].time)"
         return cell
     }
     

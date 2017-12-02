@@ -13,12 +13,14 @@ class AppointmentViewController: UIViewController {
     private let screenSize: CGRect = UIScreen.main.bounds
     private let detailsLabel: UILabel
     private let timeLabel: UILabel
+    private let datePicker: UIDatePicker
     private let rescheduleButton: UIButton
     private let cancelButton: UIButton
 
     init(_ apptString: String) {
         detailsLabel = UILabel(frame: CGRect(x: screenSize.width * 0.125, y: (screenSize.width * 0.15), width: screenSize.width * 0.75, height: 50))
         timeLabel = UILabel(frame: CGRect(x: screenSize.width * 0.125, y: (screenSize.width * 0.15) + 100, width: screenSize.width * 0.75, height: 100))
+        datePicker = UIDatePicker(frame: CGRect(x: screenSize.width * 0.125, y: (screenSize.width * 0.15) + 50, width: screenSize.width * 0.75, height: 200))
         rescheduleButton = UIButton(frame: CGRect(x: screenSize.width * 0.125, y: (screenSize.width * 0.15) + 250, width: screenSize.width * 0.75, height: 50))
         cancelButton = UIButton(frame: CGRect(x: screenSize.width * 0.125, y: (screenSize.width * 0.15) + 325, width: screenSize.width * 0.75, height: 50))
         
@@ -45,10 +47,16 @@ class AppointmentViewController: UIViewController {
         timeLabel.textColor = UIColor(red:0.06, green:0.11, blue:0.05, alpha:1.0)
         self.view.addSubview(timeLabel)
         
+        datePicker.datePickerMode = .dateAndTime
+        datePicker.minuteInterval = 15
+        datePicker.minimumDate = Date()
+        datePicker.isHidden = true
+        self.view.addSubview(datePicker)
+        
         rescheduleButton.setTitle("Reschedule Appointment", for: .normal)
         rescheduleButton.backgroundColor = UIColor(red:0.56, green:0.85, blue:0.91, alpha:1.0)
         rescheduleButton.setTitleColor(UIColor(red:0.06, green:0.11, blue:0.05, alpha:1.0), for: .normal)
-        rescheduleButton.addTarget(self, action: #selector(startReschedule), for: UIControlEvents.touchUpInside)
+        rescheduleButton.addTarget(self, action: #selector(rescheduleAppointment), for: UIControlEvents.touchUpInside)
         rescheduleButton.isUserInteractionEnabled = true
         self.view.addSubview(rescheduleButton)
         
@@ -86,13 +94,30 @@ class AppointmentViewController: UIViewController {
         return apptDetails
     }
     
-    @objc func startReschedule() -> Void {
-        
+    @objc func rescheduleAppointment() -> Void {
+        if (timeLabel.isHidden) {
+            let date: Date = datePicker.date
+            let formatter: DateFormatter = DateFormatter()
+            formatter.dateFormat = "MMM dd 'at' hh:mm"
+            let dateString: String = formatter.string(from: date)
+            updateAppointmentsWithText(text: detailsLabel.text!, date: dateString)
+            
+            let newRes = selectFromAppointmentsWithText(text: detailsLabel.text!)
+            
+            timeLabel.isHidden = false
+            datePicker.isHidden = true
+            rescheduleButton.setTitle("Reschedule Appointment", for: .normal)
+            timeLabel.text = newRes.time
+        } else {
+            timeLabel.isHidden = true
+            datePicker.isHidden = false
+            rescheduleButton.setTitle("Confirm Reschedule", for: .normal)
+        }
     }
     
     @objc func cancelAppointment() -> Void {
-        let appointment: String = detailsLabel.text!
-        deleteAppointmentWithText(text: appointment)
+        deleteAppointmentWithText(text: detailsLabel.text!)
+        self.navigationController?.popViewController(animated: true)
     }
     
 

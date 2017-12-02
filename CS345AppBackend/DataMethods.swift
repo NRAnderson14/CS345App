@@ -182,11 +182,25 @@ func selectFromAppointmentsWithText(text: String) -> (time: String, details: Str
 }
 
 func updateAppointmentsWithText(text: String, date: String) -> Void {
-    
+    do {
+        let DB = try Connection("\(path)/db.sqlite3")
+        let appt = appointments.filter(apptDetails == text)
+        try DB.run(appt.update(apptTime <- date))
+        
+    } catch {
+        print(error)
+    }
 }
 
 func deleteAppointmentWithText(text: String) -> Void {
-    
+    do {
+        let DB = try Connection("\(path)/db.sqlite3")
+        let appt = appointments.filter(apptDetails == text)
+        try DB.run(appt.delete())
+        
+    } catch {
+        print(error)
+    }
 }
 
 
@@ -208,8 +222,8 @@ func delDB() -> Void {
 }
 
 func populateData() -> Void {
-    addStore(name: "Store One", storeAddress: "Store one's address")
-    addStore(name: "Store Two", storeAddress: "Store two's address")
-    addAccount(userFirstName: "Nathan", userLastName: "Anderson", userHomeStore: 1)
-    addAppointment(user: 1, store: 1, appointmentTime: "11:30 11/29/17", appointmentDetails: "Oil change")
+    addStore(name: "CarZone", storeAddress: "1842 W. East St")
+    addStore(name: "AutoMax", storeAddress: "450 Hwy 33")
+    addAccount(userFirstName: "John", userLastName: "Doe", userHomeStore: 1)
+    addAppointment(user: 1, store: 1, appointmentTime: "Dec 15 at 04:15", appointmentDetails: "Oil change")
 }

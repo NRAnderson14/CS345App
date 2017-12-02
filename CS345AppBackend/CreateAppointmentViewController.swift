@@ -67,6 +67,7 @@ class CreateAppointmentViewController: UIViewController {
         formatter.dateFormat = "MMM dd 'at' hh:mm"
         let dateString: String = formatter.string(from: date)
         addAppointment(user: 1, store: 1, appointmentTime: dateString, appointmentDetails: content)
+        self.navigationController?.popViewController(animated: true)
     }
     
 
