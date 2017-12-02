@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     private let generalwork: UILabel
     private let generalImage: UIImageView
     private let myView: UIView
+    private let screenSize: CGRect = UIScreen.main.bounds
     
     init() {
         engine = UILabel()
@@ -37,19 +38,21 @@ class ViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
+        self.edgesForExtendedLayout = []
+        self.extendedLayoutIncludesOpaqueBars = true
         self.view = UIView(frame: UIScreen.main.bounds)
         myView.clipsToBounds = true
         myView.backgroundColor = UIColor.white
         self.view.addSubview(myView)
         
-        engineImage.frame = CGRect(x:UIScreen.main.bounds.size.width/2-100, y: UIScreen.main.bounds.size.height/2-300, width: 50, height: 50)
+        engineImage.frame = CGRect(x:UIScreen.main.bounds.size.width/2+50, y: UIScreen.main.bounds.size.height/2-200, width: 50, height: 50)
         engineImage.image = UIImage(named: "engine.jpg")
         engineImage.isUserInteractionEnabled = true
         engineImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.engineTap(_:))))
         self.myView.addSubview(engineImage)
         
         let one = engine
-        one.frame = CGRect(x: UIScreen.main.bounds.size.width/2-100 , y: UIScreen.main.bounds.size.height/2-250, width: 150, height: 50)
+        one.frame = CGRect(x: UIScreen.main.bounds.size.width/2+50 , y: UIScreen.main.bounds.size.height/2-150, width: 150, height: 50)
         one.text = "Engine"
         one.isUserInteractionEnabled = true
         one.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.engineTap(_:))))
@@ -94,14 +97,14 @@ class ViewController: UIViewController {
         four.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.generalTap(_:))))
         self.myView.addSubview(four)
         
-        lightingImage.frame = CGRect(x:UIScreen.main.bounds.size.width/2-100, y: UIScreen.main.bounds.size.height/2+100, width: 50, height: 50)
+        lightingImage.frame = CGRect(x:UIScreen.main.bounds.size.width/2+50, y: UIScreen.main.bounds.size.height/2-100, width: 50, height: 50)
         lightingImage.image = UIImage(named: "halo.jpg")
         lightingImage.isUserInteractionEnabled = true
         lightingImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.lightTap(_:))))
         self.myView.addSubview(lightingImage)
         
         let five = lighting
-        five.frame = CGRect(x:UIScreen.main.bounds.size.width/2-100, y: UIScreen.main.bounds.size.height/2+150, width: 150, height: 50)
+        five.frame = CGRect(x:UIScreen.main.bounds.size.width/2+50, y: UIScreen.main.bounds.size.height/2-50, width: 150, height: 50)
         five.text = "Lighting"
         five.isUserInteractionEnabled = true
         five.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.lightTap(_:))))
@@ -124,7 +127,6 @@ class ViewController: UIViewController {
         myView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
         
         super.init(coder: aDecoder)
-//        fatalError("init(coder:) has not been implemented")
     }
 
     override func viewDidLoad() {
