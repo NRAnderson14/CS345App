@@ -209,6 +209,15 @@ func deleteAppointmentWithText(text: String) -> Void {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////                Testing                    ////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
+func dbExists() -> Bool {
+    let fileman = FileManager.default
+    var res: Bool = false
+    let dbPath = "\(path)/db.sqlite3"
+    res = fileman.isWritableFile(atPath: dbPath)
+    
+    return res
+}
+
 func delDB() -> Void {
     let fileman = FileManager.default
     do {
