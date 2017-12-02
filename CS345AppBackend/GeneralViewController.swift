@@ -90,8 +90,7 @@ class GeneralViewController: UIViewController
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.title = "General Work"
     }
     
     override func didReceiveMemoryWarning() {

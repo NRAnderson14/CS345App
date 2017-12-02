@@ -9,16 +9,17 @@ import UIKit
 
 class DriveViewController: UIViewController
 {
-    var one: UILabel
+    var one: UIButton
     var two: UILabel
     var three: UILabel
     var four: UILabel
     var five: UILabel
     var exit: UILabel
     var submit: UILabel
+    
     init(string: String)
     {
-        one = UILabel()
+        one = UIButton()
         two = UILabel()
         three = UILabel()
         four = UILabel()
@@ -31,10 +32,17 @@ class DriveViewController: UIViewController
         self.edgesForExtendedLayout = []
         self.extendedLayoutIncludesOpaqueBars = true
         
-        let this = one
-        this.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
-        this.text = "Transmission Modification"
-        self.view.addSubview(this)
+        one.setTitle("Transmission Modification", for: .normal)
+        one.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
+        one.setTitleColor(.black, for: .normal)
+        one.addTarget(self, action: #selector(createTransModAppointment), for: .touchUpInside)
+        self.view.addSubview(one)
+        
+//        let trans = one
+//        trans.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
+//        trans.text = "Transmission Modification"
+//        trans.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(createAppointment(contents: trans.text!))))
+//        self.view.addSubview(trans)
         
         let t = two
         t.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+20, width: 300, height: 50)
@@ -64,24 +72,33 @@ class DriveViewController: UIViewController
         self.view.addSubview(exit)
         
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    @objc func driveTap(_ recognizer: UITapGestureRecognizer) {
+    
+    @objc
+    func driveTap(_ recognizer: UITapGestureRecognizer) {
 //        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
 //            NSLog("This is dismissed...")
 //        })
         self.navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        self.title = "Drivetrain"
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @objc func createTransModAppointment() -> Void {
+        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: "Transmission Modification")
+        self.navigationController?.pushViewController(apptVC, animated: true)
+    }
+
 }
 
