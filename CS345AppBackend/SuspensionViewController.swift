@@ -9,20 +9,22 @@ import UIKit
 
 class SuspensionViewController: UIViewController
 {
-    var one: UILabel
-    var two: UILabel
-    var three: UILabel
-    var four: UILabel
-    var five: UILabel
+    var one: UIButton
+    var two: UIButton
+    var three: UIButton
+    var four: UIButton
+    var five: UIButton
     var exit: UILabel
     var submit: UILabel
+    
     init(string: String)
     {
-        one = UILabel()
-        two = UILabel()
-        three = UILabel()
-        four = UILabel()
-        five = UILabel()
+        let data: [String] = ["Sway Bar Replacement", "Tie Rod Replacement", "Ball Joint Replacement", "Shock Replacement", "Control Arm Replacement"]
+        one = UIButton()
+        two = UIButton()
+        three = UIButton()
+        four = UIButton()
+        five = UIButton()
         exit = UILabel()
         submit = UILabel()
         
@@ -31,33 +33,42 @@ class SuspensionViewController: UIViewController
         self.edgesForExtendedLayout = []
         self.extendedLayoutIncludesOpaqueBars = true
         
-        let this = one
-        this.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
-        this.text = "Sway Bar Replacement"
-        self.view.addSubview(this)
+        one.setTitle(data[0], for: .normal)
+        one.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2 - 100, width: 300, height: 50)
+        one.setTitleColor(.black, for: .normal)
+        one.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
+        self.view.addSubview(one)
         
-        let t = two
-        t.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+20, width: 300, height: 50)
-        t.text = "Tie Rod Replacement"
-        self.view.addSubview(t)
+        two.setTitle(data[1], for: .normal)
+        two.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2 - 50, width: 300, height: 50)
+        two.setTitleColor(.black, for: .normal)
+        two.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
+        self.view.addSubview(two)
         
-        let th = three
-        th.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+40, width: 300, height: 50)
-        th.text = "Ball Joint Replacement"
-        self.view.addSubview(th)
+        three.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
+        three.setTitle(data[2], for: .normal)
+        three.setTitleColor(.black, for: .normal)
+        three.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
+        self.view.addSubview(three)
         
-        let f = four
-        f.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+60, width: 300, height: 50)
-        f.text = "Shock Replacement"
-        self.view.addSubview(f)
         
-        let w = five
-        w.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2+80, width: 300, height: 50)
-        w.text = "Control Arm Replacement"
-        self.view.addSubview(w)
+        four.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2, y: UIScreen.main.bounds.size.height/2 + 50, width: 300, height: 50)
+        four.setTitle(data[3], for: .normal)
+        four.setTitleColor(.black, for: .normal)
+        four.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
+        self.view.addSubview(four)
         
-        exit.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2-200, width: 200, height: 50)
+        
+        five.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2 + 100, width: 300, height: 50)
+        five.setTitle(data[4], for: .normal)
+        five.setTitleColor(.black, for: .normal)
+        five.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
+        self.view.addSubview(five)
+        
+        
+        exit.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2-200, width: 300, height: 50)
         exit.text = "Return To Main Page"
+        exit.textAlignment = .center
         exit.isUserInteractionEnabled = true
         exit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(suspensionTap(_:))))
         self.view.addSubview(exit)
@@ -69,9 +80,6 @@ class SuspensionViewController: UIViewController
     }
     
     @objc func suspensionTap(_ recognizer: UITapGestureRecognizer) {
-//        self.presentingViewController?.dismiss(animated: true, completion: { () -> Void in
-//            NSLog("This is dismissed...")
-//        })
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -83,6 +91,31 @@ class SuspensionViewController: UIViewController
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getLabelTouchedText(y: CGFloat) -> String {
+        if (y < 250.0) {
+            return one.title(for: .normal)!
+        } else if (y < 300.0) {
+            return two.title(for: .normal)!
+        } else if (y < 350.0) {
+            return three.title(for: .normal)!
+        } else if (y < 400.0) {
+            return four.title(for: .normal)!
+        } else {
+            return five.title(for: .normal)!
+        }
+    }
+    
+    func createCAVC(_ details: String) -> Void {
+        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: details)
+        self.navigationController?.pushViewController(apptVC, animated: true)
+    }
+    
+    @objc func apptButtonTouched(_ recognizer: UITapGestureRecognizer) {
+        let touchY: CGFloat = (recognizer.view?.center.y)!
+        let touchedLabel: String = getLabelTouchedText(y: touchY)
+        createCAVC(touchedLabel)
     }
 }
 

@@ -70,7 +70,7 @@ class DriveViewController: UIViewController
         exit.text = "Return To Main Page"
         exit.textAlignment = .center
         exit.isUserInteractionEnabled = true
-        exit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ViewController.driveTap(_:))))
+        exit.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(driveTap(_:))))
         self.view.addSubview(exit)
         
     }
