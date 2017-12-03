@@ -19,6 +19,7 @@ class DriveViewController: UIViewController
     
     init(string: String)
     {
+        let data: [String] = ["Transmission Modification", "Driveshaft Repair", "Axle Repair", "Drivetrain Modification", "Fluid Service"]
         one = UIButton()
         two = UIButton()
         three = UIButton()
@@ -32,51 +33,34 @@ class DriveViewController: UIViewController
         self.edgesForExtendedLayout = []
         self.extendedLayoutIncludesOpaqueBars = true
         
-        one.setTitle("Transmission Modification", for: .normal)
+        one.setTitle(data[0], for: .normal)
         one.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2 - 100, width: 300, height: 50)
         one.setTitleColor(.black, for: .normal)
-//        one.addTarget(self, action: #selector(createTransModAppointment), for: .touchUpInside)
         one.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
         self.view.addSubview(one)
         
-//        let trans = one
-//        trans.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
-//        trans.text = "Transmission Modification"
-//        trans.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(createAppointment(contents: trans.text!))))
-//        self.view.addSubview(trans)
-        
-        two.setTitle("Driveshaft Repair", for: .normal)
+        two.setTitle(data[1], for: .normal)
         two.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2 - 50, width: 300, height: 50)
         two.setTitleColor(.black, for: .normal)
-//        two.addTarget(self, action: #selector(createTransModAppointment), for: .touchUpInside)
         two.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
         self.view.addSubview(two)
         
-//        let t = two
-//        t.frame = CGRect(x: 50 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
-//        t.text = "Driveshaft Repair"
-//        self.view.addSubview(t)
-        
-        
         three.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2, width: 300, height: 50)
-//        th.text = "Axle Repair"
-        three.setTitle("Axle Repair", for: .normal)
+        three.setTitle(data[2], for: .normal)
         three.setTitleColor(.black, for: .normal)
         three.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
         self.view.addSubview(three)
         
         
         four.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2, y: UIScreen.main.bounds.size.height/2 + 50, width: 300, height: 50)
-//        f.text = "Drivetrain Modification"
-        four.setTitle("Drivetrain Modification", for: .normal)
+        four.setTitle(data[3], for: .normal)
         four.setTitleColor(.black, for: .normal)
         four.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
         self.view.addSubview(four)
         
         
         five.frame = CGRect(x: (UIScreen.main.bounds.size.width-300)/2 , y: UIScreen.main.bounds.size.height/2 + 100, width: 300, height: 50)
-//        w.text = "Fluid Service"
-        five.setTitle("Fluid Service", for: .normal)
+        five.setTitle(data[4], for: .normal)
         five.setTitleColor(.black, for: .normal)
         five.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(apptButtonTouched(_:))))
         self.view.addSubview(five)
@@ -132,31 +116,6 @@ class DriveViewController: UIViewController
         let touchY: CGFloat = (recognizer.view?.center.y)!
         let touchedLabel: String = getLabelTouchedText(y: touchY)
         createCAVC(touchedLabel)
-    }
-    
-    @objc func createTransModAppointment() -> Void {
-        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: "Transmission Modification")
-        self.navigationController?.pushViewController(apptVC, animated: true)
-    }
-    
-    @objc func createDriveRepairAppointment() -> Void {
-        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: "Driveshaft Repair")
-        self.navigationController?.pushViewController(apptVC, animated: true)
-    }
-    
-    @objc func createAxleRepairAppointment() -> Void {
-        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: "Axle Repair")
-        self.navigationController?.pushViewController(apptVC, animated: true)
-    }
-    
-    @objc func createDTModAppointment() -> Void {
-        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: "Drivetrain Modification")
-        self.navigationController?.pushViewController(apptVC, animated: true)
-    }
-    
-    @objc func createFluidServiceAppointment() -> Void {
-        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: "Fluid Service")
-        self.navigationController?.pushViewController(apptVC, animated: true)
     }
 
 }
