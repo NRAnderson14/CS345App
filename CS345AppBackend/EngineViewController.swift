@@ -92,13 +92,13 @@ class EngineViewController: UIViewController
     }
     
     func getLabelTouchedText(y: CGFloat) -> String {
-        if (y < 250.0) {
+        if (y < one.frame.maxY) {
             return one.title(for: .normal)!
-        } else if (y < 300.0) {
+        } else if (y < two.frame.maxY) {
             return two.title(for: .normal)!
-        } else if (y < 350.0) {
+        } else if (y < three.frame.maxY) {
             return three.title(for: .normal)!
-        } else if (y < 400.0) {
+        } else if (y < four.frame.maxY) {
             return four.title(for: .normal)!
         } else {
             return five.title(for: .normal)!
