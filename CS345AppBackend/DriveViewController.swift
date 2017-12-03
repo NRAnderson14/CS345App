@@ -123,8 +123,15 @@ class DriveViewController: UIViewController
         }
     }
     
+    func createCAVC(_ details: String) -> Void {
+        let apptVC: CreateAppointmentViewController = CreateAppointmentViewController(appointmentText: details)
+        self.navigationController?.pushViewController(apptVC, animated: true)
+    }
+    
     @objc func apptButtonTouched(_ recognizer: UITapGestureRecognizer) {
-        print(getLabelTouchedText(y: (recognizer.view?.center.y)!))
+        let touchY: CGFloat = (recognizer.view?.center.y)!
+        let touchedLabel: String = getLabelTouchedText(y: touchY)
+        createCAVC(touchedLabel)
     }
     
     @objc func createTransModAppointment() -> Void {
