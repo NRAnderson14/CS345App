@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/wm4253wk/Documents/Fall2017/CS345/Projects/CS345AppBackend/CS345AppBackend/ViewController.swift">
+      location = "group:../SQLite.xcodeproj">
    </FileRef>
    <FileRef
       location = "self:">
